@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hey Parrot - Intelligence that listens. Your GTM team's second brain.">
+    <title>Hey Parrot! - Intelligence that listens</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+           CSS CUSTOM PROPERTIES - BRAND COLORS
+        ======================================== */
+        :root {
+            --midnight-ink: #0A0A10;
+            --paper-mist: #F8F7F4;
+            --coral-pulse: #FF6B5A;
+            --sage-green: #A1BEB0;
+            --gold-clay: #D7B472;
+            --graphite-grey: #8A8F97;
+
+            /* Spacing system (8px baseline) */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 80px;
+
+            /* Typography */
+            --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Transitions */
+            --transition-smooth: 220ms ease-in-out;
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--midnight-ink);
+            background-color: var(--paper-mist);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1 {
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .microcopy {
+            font-weight: 300;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--graphite-grey);
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--graphite-grey);
+            margin-bottom: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ========================================
+           CONTAINER & LAYOUT
+        ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        section {
+            padding: var(--space-2xl) 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+        }
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--coral-pulse);
+            color: var(--paper-mist);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5748;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(255, 107, 90, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--midnight-ink);
+            border: 2px solid var(--sage-green);
+            padding: 14px 30px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--sage-green);
+            color: var(--midnight-ink);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            background: linear-gradient(180deg, var(--paper-mist) 0%, rgba(248, 247, 244, 0.8) 100%);
+            text-align: center;
+            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 48px;
+            color: var(--midnight-ink);
+            margin-bottom: var(--space-lg);
+            display: inline-block;
+        }
+
+        .logo-dot {
+            display: inline-block;
+            color: var(--coral-pulse);
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-md);
+            color: var(--midnight-ink);
+        }
+
+        .hero .subheadline {
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--graphite-grey);
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .listening-loop {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--sage-green);
+            border-radius: 50%;
+            position: relative;
+            opacity: 0.3;
+            animation: rotate 8s linear infinite;
+        }
+
+        .listening-loop::before,
+        .listening-loop::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .listening-loop::before {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--coral-pulse);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+
+        .listening-loop::after {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-clay);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll-pulse 2s ease-in-out infinite;
+            font-size: 24px;
+            color: var(--graphite-grey);
+            opacity: 0.6;
+        }
+
+        @keyframes scroll-pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+                min-height: 100vh;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .hero .subheadline {
+                font-size: 18px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           BENTO BOX GRID - INTRODUCTION SECTION
+        ======================================== */
+        .introduction-section {
+            background-color: white;
+            text-align: center;
+        }
+
+        .introduction-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .introduction-section > .container > p {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .bento-card {
+            background: white;
+            border: 1px solid rgba(161, 190, 176, 0.15);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            transition: all var(--transition-smooth);
+            box-shadow: 0 2px 12px rgba(10, 10, 16, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(10, 10, 16, 0.12);
+        }
+
+        .bento-card-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-card-wide {
+            grid-column: span 2;
+        }
+
+        .bento-card-tall {
+            grid-row: span 2;
+        }
+
+        .bento-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .bento-stat {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--coral-pulse);
+            margin-bottom: var(--space-xs);
+        }
+
+        .bento-card h3 {
+            margin-bottom: var(--space-sm);
+            color: var(--midnight-ink);
+        }
+
+        .bento-card p {
+            color: var(--graphite-grey);
+            font-size: 15px;
+        }
+
+        .bento-visual {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(161, 190, 176, 0.1) 0%, rgba(255, 107, 90, 0.1) 100%);
+            border-radius: 4px;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bento-card-large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-card-large,
+            .bento-card-wide,
+            .bento-card-tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        /* ========================================
+           HORIZONTAL CAROUSEL - AI IN ACTION
+        ======================================== */
+        .ai-action-section {
+            background: rgba(161, 190, 176, 0.03);
+            text-align: center;
+        }
+
+        .ai-action-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .ai-action-section > .container > p {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            margin-top: var(--space-xl);
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: var(--space-md);
+            padding: 20px 40px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-card {
+            flex: 0 0 400px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(10, 10, 16, 0.06);
+            transition: all var(--transition-smooth);
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(10, 10, 16, 0.12);
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(161, 190, 176, 0.2) 0%, rgba(255, 107, 90, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+
+        .carousel-content {
+            padding: var(--space-lg);
+        }
+
+        .carousel-content h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .carousel-content p {
+            color: var(--graphite-grey);
+            font-size: 15px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-md);
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--graphite-grey);
+            opacity: 0.3;
+            transition: all var(--transition-smooth);
+        }
+
+        .carousel-dot.active {
+            background: var(--coral-pulse);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-card {
+                flex: 0 0 320px;
+            }
+
+            .carousel-container {
+                padding: 20px 20px;
+            }
+        }
+
+        /* ========================================
+           TAB SWITCHER - WHY IT WORKS
+        ======================================== */
+        .why-works-section {
+            background: var(--paper-mist);
+            text-align: center;
+        }
+
+        .why-works-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .why-works-section > .container > p {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .tab-switcher {
+            margin-top: var(--space-xl);
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: var(--space-xl);
+            align-items: center;
+            text-align: left;
+        }
+
+        .tabs-list {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            border-bottom: 2px solid rgba(161, 190, 176, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            font-family: var(--font-family);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--graphite-grey);
+            padding: var(--space-sm) 0;
+            cursor: pointer;
+            position: relative;
+            transition: color var(--transition-smooth);
+        }
+
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--coral-pulse);
+            transform: scaleX(0);
+            transition: transform var(--transition-smooth);
+        }
+
+        .tab-button.active {
+            color: var(--midnight-ink);
+        }
+
+        .tab-button.active::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 240ms ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .tab-content h3 {
+            font-size: 24px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .tab-content p {
+            color: var(--graphite-grey);
+            line-height: 1.6;
+        }
+
+        .tab-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(161, 190, 176, 0.2) 0%, rgba(215, 180, 114, 0.2) 100%);
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        }
+
+        .tab-image.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .tab-switcher {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-list {
+                justify-content: flex-start;
+            }
+
+            .tab-button {
+                font-size: 14px;
+            }
+        }
+
+        /* ========================================
+           TESTIMONIAL CAROUSEL
+        ======================================== */
+        .testimonials-section {
+            background: white;
+            text-align: center;
+        }
+
+        .testimonials-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .testimonials-section > .container > p {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: var(--paper-mist);
+            border: 1px solid rgba(161, 190, 176, 0.1);
+            border-radius: 8px;
+            padding: var(--space-xl);
+            display: none;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        }
+
+        .testimonial-card.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .testimonial-quote {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--midnight-ink);
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--graphite-grey);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--midnight-ink);
+        }
+
+        .testimonial-title {
+            font-size: 14px;
+            color: var(--graphite-grey);
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .testimonial-arrow {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--graphite-grey);
+            cursor: pointer;
+            transition: color var(--transition-smooth);
+            padding: var(--space-sm);
+        }
+
+        .testimonial-arrow:hover {
+            color: var(--coral-pulse);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--graphite-grey);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+        }
+
+        .testimonial-dot.active {
+            background: var(--coral-pulse);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* ========================================
+           FAQ ACCORDION
+        ======================================== */
+        .faq-section {
+            background: var(--paper-mist);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .faq-section > .container > p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid rgba(161, 190, 176, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: var(--space-md);
+            font-family: var(--font-family);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--midnight-ink);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition-smooth);
+        }
+
+        .faq-question:hover {
+            color: var(--coral-pulse);
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: var(--coral-pulse);
+            transition: transform var(--transition-smooth);
+            flex-shrink: 0;
+            margin-left: var(--space-sm);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            padding: 0 var(--space-md) var(--space-md);
+        }
+
+        .faq-answer p {
+            color: var(--graphite-grey);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           FINAL CTA SECTION
+        ======================================== */
+        .final-cta-section {
+            background: linear-gradient(135deg, var(--paper-mist) 0%, rgba(255, 107, 90, 0.05) 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .final-cta-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .final-cta-section .subheadline {
+            font-size: 20px;
+            color: var(--graphite-grey);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto var(--space-sm);
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 16px 24px;
+            font-family: var(--font-family);
+            font-size: 16px;
+            border: 2px solid var(--sage-green);
+            border-radius: 8px;
+            background: white;
+            color: var(--midnight-ink);
+            transition: all var(--transition-smooth);
+        }
+
+        .cta-input:focus {
+            outline: none;
+            border-color: var(--coral-pulse);
+        }
+
+        .cta-input::placeholder {
+            color: var(--graphite-grey);
+            opacity: 0.6;
+        }
+
+        .final-cta-section .btn {
+            font-size: 18px;
+            padding: 18px 40px;
+        }
+
+        .final-cta-section .microcopy {
+            margin-top: var(--space-sm);
+            display: block;
+        }
+
+        .final-cta-visual {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .final-cta-section {
+                padding: 60px 0;
+            }
+
+            .cta-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-input {
+                width: 100%;
+            }
+
+            .final-cta-section .btn {
+                width: 100%;
+            }
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            background-color: var(--midnight-ink);
+            color: var(--paper-mist);
+            padding: var(--space-2xl) 0 var(--space-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--paper-mist);
+        }
+
+        .footer-column p,
+        .footer-column a {
+            font-size: 14px;
+            color: var(--graphite-grey);
+            text-decoration: none;
+            line-height: 2;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-column a:hover {
+            color: var(--coral-pulse);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--sage-green);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(161, 190, 176, 0.2);
+            padding-top: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--graphite-grey);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-bottom a {
+            color: var(--graphite-grey);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--sage-green);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-sm);
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           SCROLL ANIMATIONS
+        ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 400ms ease-out, transform 400ms ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="logo">
+                Hey Parrot<span class="logo-dot">!</span>
+            </div>
+
+            <h1>Intelligence that listens.</h1>
+
+            <p class="subheadline">
+                Your GTM team's second brain. Capturing conversations, spotting patterns, building collateral — while you focus on what matters.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#cta" class="btn btn-primary">Let Parrot listen</a>
+                <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="listening-loop"></div>
+            </div>
+
+            <div class="scroll-indicator">↓</div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         INTRODUCTION - BENTO BOX GRID
+    ======================================== -->
+    <section class="introduction-section fade-in">
+        <div class="container">
+            <div class="section-label">Introduction</div>
+            <h2>Smarter. Faster. More Personal.</h2>
+            <p>Everything your GTM team needs, powered by AI that listens and learns.</p>
+
+            <div class="bento-grid">
+                <!-- Large Card 1 -->
+                <div class="bento-card bento-card-large">
+                    <div class="bento-visual">🎯</div>
+                    <h3>Meeting Intelligence</h3>
+                    <p>Real-time context capture from every call, meeting, and conversation.</p>
+                </div>
+
+                <!-- Small Card 2 -->
+                <div class="bento-card">
+                    <div class="bento-stat">3x</div>
+                    <p>faster collateral</p>
+                </div>
+
+                <!-- Tall Card 3 -->
+                <div class="bento-card bento-card-tall">
+                    <div class="bento-icon">🧠</div>
+                    <h3>Pattern Recognition</h3>
+                    <p>Visual of connected nodes and intelligent insights across your entire GTM motion.</p>
+                </div>
+
+                <!-- Small Card 4 -->
+                <div class="bento-card">
+                    <div class="bento-icon">✨</div>
+                    <h3>Auto Generation</h3>
+                </div>
+
+                <!-- Wide Card 5 -->
+                <div class="bento-card bento-card-wide">
+                    <h3>Sales Enablement</h3>
+                    <p>Every asset, organized and searchable. Your team finds what they need, when they need it.</p>
+                </div>
+
+                <!-- Small Card 6 -->
+                <div class="bento-card">
+                    <div class="bento-icon">🔌</div>
+                    <h3>Chrome Extension</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         AI IN ACTION - HORIZONTAL CAROUSEL
+    ======================================== -->
+    <section class="ai-action-section fade-in">
+        <div class="container">
+            <div class="section-label">AI in Action</div>
+            <h2>Your AI assistant, always listening.</h2>
+            <p>Discover how intelligent features turn conversations into lasting value.</p>
+        </div>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-container" id="carousel">
+                <!-- Card 1 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">🎤</div>
+                    <div class="carousel-content">
+                        <h3>Real-time Capture</h3>
+                        <p>Parrot captures decisions, action items, and customer insights from every conversation — no manual notes required.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">🔍</div>
+                    <div class="carousel-content">
+                        <h3>Pattern Recognition</h3>
+                        <p>See patterns across deals, objections, and customer needs. Parrot connects the dots your team might miss.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">📄</div>
+                    <div class="carousel-content">
+                        <h3>Asset Generation</h3>
+                        <p>Turn conversations into battle cards, one-pagers, and case studies. Beautifully formatted, instantly ready.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">🌐</div>
+                    <div class="carousel-content">
+                        <h3>Chrome Extension</h3>
+                        <p>Access insights and generate assets without leaving your workflow. Parrot lives where you work.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">📚</div>
+                    <div class="carousel-content">
+                        <h3>Knowledge Library</h3>
+                        <p>Every asset, organized and searchable. Your team finds what they need, exactly when they need it.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="carousel-card">
+                    <div class="carousel-image">🤝</div>
+                    <div class="carousel-content">
+                        <h3>Team Memory</h3>
+                        <p>Parrot builds your team's collective intelligence — no more lost insights or repeated questions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         WHY IT WORKS - TAB SWITCHER
+    ======================================== -->
+    <section class="why-works-section fade-in" id="how-it-works">
+        <div class="container">
+            <div class="section-label">Why It Works</div>
+            <h2>Intelligence that adapts to you</h2>
+            <p>Parrot isn't just recording — it's understanding, learning, and building with your team.</p>
+
+            <div class="tab-switcher">
+                <div class="tab-content-area">
+                    <div class="tabs-list">
+                        <button class="tab-button active" data-tab="tab1">Accurate Capture</button>
+                        <button class="tab-button" data-tab="tab2">Adaptive AI</button>
+                        <button class="tab-button" data-tab="tab3">Seamless Sync</button>
+                        <button class="tab-button" data-tab="tab4">Recovery Flow</button>
+                        <button class="tab-button" data-tab="tab5">Team Insights</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab1">
+                        <h3>Professional-grade listening</h3>
+                        <p>Every word matters. Parrot captures nuance, tone, and context with precision that rivals human note-taking — but never misses a detail.</p>
+                    </div>
+
+                    <div class="tab-content" id="tab2">
+                        <h3>Learns your language</h3>
+                        <p>The more Parrot listens, the better it understands your team's unique terminology, priorities, and sales motion. Intelligence that evolves with you.</p>
+                    </div>
+
+                    <div class="tab-content" id="tab3">
+                        <h3>Connected ecosystem</h3>
+                        <p>Integrates with your CRM, calendar, and communication tools. Parrot works in the background, so you don't have to.</p>
+                    </div>
+
+                    <div class="tab-content" id="tab4">
+                        <h3>Never lose context</h3>
+                        <p>Missed a meeting? Need to catch up on a deal? Parrot provides instant context so your team never starts from scratch.</p>
+                    </div>
+
+                    <div class="tab-content" id="tab5">
+                        <h3>Collective intelligence</h3>
+                        <p>Learn from patterns across your entire organization. What works for one deal can inform the next — automatically.</p>
+                    </div>
+                </div>
+
+                <div class="tab-images">
+                    <div class="tab-image active" data-tab="tab1">🎯</div>
+                    <div class="tab-image" data-tab="tab2">🧠</div>
+                    <div class="tab-image" data-tab="tab3">🔗</div>
+                    <div class="tab-image" data-tab="tab4">⏮️</div>
+                    <div class="tab-image" data-tab="tab5">👥</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TESTIMONIALS - AUTO-PLAYING CAROUSEL
+    ======================================== -->
+    <section class="testimonials-section fade-in">
+        <div class="container">
+            <div class="section-label">Testimonials</div>
+            <h2>Trusted by GTM Teams Everywhere</h2>
+            <p>Real feedback from revenue teams transforming how they work.</p>
+
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card active">
+                    <div class="testimonial-quote">"Smart listening for every call."</div>
+                    <p class="testimonial-text">
+                        Parrot transformed how our sales team captures insights. Instead of scattered notes, we have organized intelligence that actually gets used. It's like having an analyst on every call.
+                    </p>
+                    <div class="testimonial-author">Marcus Chen</div>
+                    <div class="testimonial-title">VP of Sales</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Collateral that writes itself."</div>
+                    <p class="testimonial-text">
+                        We used to spend days creating battle cards and one-pagers. Now Parrot generates them in minutes, pulling from our latest conversations. Our reps always have fresh content.
+                    </p>
+                    <div class="testimonial-author">Sarah Mitchell</div>
+                    <div class="testimonial-title">Head of Revenue Operations</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"One tool, total clarity."</div>
+                    <p class="testimonial-text">
+                        Finally, a solution that doesn't create more work. Parrot captures, understands, and builds — all in the background. Our team focuses on selling, not documenting.
+                    </p>
+                    <div class="testimonial-author">David Torres</div>
+                    <div class="testimonial-title">Chief Revenue Officer</div>
+                </div>
+
+                <div class="testimonial-controls">
+                    <button class="testimonial-arrow" id="prevTestimonial">←</button>
+                    <div class="testimonial-dots">
+                        <span class="testimonial-dot active"></span>
+                        <span class="testimonial-dot"></span>
+                        <span class="testimonial-dot"></span>
+                    </div>
+                    <button class="testimonial-arrow" id="nextTestimonial">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FAQ - ACCORDION
+    ======================================== -->
+    <section class="faq-section fade-in">
+        <div class="container">
+            <div class="section-label">FAQ</div>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about Hey Parrot before getting started.</p>
+
+            <div class="faq-list">
+                <!-- Question 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does Parrot capture meeting context?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Parrot integrates with your calendar and meeting tools to automatically join calls, capturing audio, transcribing conversations, and extracting key decisions, action items, and insights in real-time.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can Parrot integrate with our existing tools?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Parrot connects seamlessly with Salesforce, HubSpot, Gong, Zoom, Google Meet, Slack, and other GTM tools your team already uses.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is Parrot suitable for all types of GTM teams?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Whether you're in sales, customer success, marketing, or RevOps, Parrot adapts to your workflow and helps capture the insights that matter most to your role.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does AI improve our collateral creation?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Parrot analyzes patterns across your conversations and automatically generates tailored assets like battle cards, case studies, and one-pagers that reflect your latest insights and customer language.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's the setup process like?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simple. Connect your tools, invite Parrot to your first meeting, and it starts learning immediately. Most teams are fully operational within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does Parrot handle data privacy?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Security is paramount. All data is encrypted at rest and in transit. Parrot follows SOC 2 compliance standards and never shares your data with third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA SECTION
+    ======================================== -->
+    <section class="final-cta-section fade-in" id="cta">
+        <div class="container">
+            <h2>Let intelligence listen.</h2>
+
+            <p class="subheadline">
+                Join the GTM teams building smarter, not harder.
+            </p>
+
+            <form class="cta-form" onsubmit="return false;">
+                <input
+                    type="email"
+                    class="cta-input"
+                    placeholder="your.email@company.com"
+                    required
+                >
+                <button type="submit" class="btn btn-primary">Get early access</button>
+            </form>
+
+            <span class="microcopy">No credit card. Just curiosity.</span>
+
+            <div class="final-cta-visual">
+                <div class="listening-loop"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1: Brand -->
+                <div class="footer-column">
+                    <div class="footer-logo">Hey Parrot<span class="logo-dot">!</span></div>
+                    <p class="footer-tagline">Intelligence that listens.</p>
+                </div>
+
+                <!-- Column 2: Product -->
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <div class="footer-links">
+                        <a href="#">Features</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Documentation</a>
+                        <a href="#">API</a>
+                    </div>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <div class="footer-links">
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2025 Hey Parrot. All rights reserved.</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT - INTERACTIVE FEATURES
+    ======================================== -->
+    <script>
+        // ========================================
+        // INTERSECTION OBSERVER - SCROLL ANIMATIONS
+        // ========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========================================
+        // HORIZONTAL CAROUSEL - SCROLL DOTS
+        // ========================================
+        const carousel = document.getElementById('carousel');
+        const carouselDots = document.getElementById('carouselDots');
+        const carouselCards = document.querySelectorAll('.carousel-card');
+
+        // Create dots
+        carouselCards.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = 'carousel-dot';
+            if (index === 0) dot.classList.add('active');
+            carouselDots.appendChild(dot);
+        });
+
+        // Update dots on scroll
+        carousel.addEventListener('scroll', () => {
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = carouselCards[0].offsetWidth + 24; // card width + gap
+            const activeIndex = Math.round(scrollLeft / cardWidth);
+
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        });
+
+        // ========================================
+        // TAB SWITCHER
+        // ========================================
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const tabImages = document.querySelectorAll('.tab-image');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+
+                // Remove active from all
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                tabImages.forEach(img => img.classList.remove('active'));
+
+                // Add active to clicked
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+                document.querySelector(`.tab-image[data-tab="${tabId}"]`).classList.add('active');
+            });
+        });
+
+        // ========================================
+        // TESTIMONIAL CAROUSEL
+        // ========================================
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        let currentTestimonial = 0;
+        let testimonialInterval;
+
+        function showTestimonial(index) {
+            testimonialCards.forEach(card => card.classList.remove('active'));
+            testimonialDots.forEach(dot => dot.classList.remove('active'));
+
+            testimonialCards[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        function nextTestimonial() {
+            const next = (currentTestimonial + 1) % testimonialCards.length;
+            showTestimonial(next);
+        }
+
+        function prevTestimonial() {
+            const prev = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+            showTestimonial(prev);
+        }
+
+        function startTestimonialAutoplay() {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
+
+        function stopTestimonialAutoplay() {
+            clearInterval(testimonialInterval);
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            stopTestimonialAutoplay();
+            startTestimonialAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            stopTestimonialAutoplay();
+            startTestimonialAutoplay();
+        });
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(index);
+                stopTestimonialAutoplay();
+                startTestimonialAutoplay();
+            });
+        });
+
+        // Pause on hover
+        document.querySelector('.testimonial-slider').addEventListener('mouseenter', stopTestimonialAutoplay);
+        document.querySelector('.testimonial-slider').addEventListener('mouseleave', startTestimonialAutoplay);
+
+        // Start autoplay
+        startTestimonialAutoplay();
+
+        // ========================================
+        // FAQ ACCORDION
+        // ========================================
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                faqItems.forEach(faq => faq.classList.remove('active'));
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // ========================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ========================================
+        // FORM SUBMISSION
+        // ========================================
+        document.querySelector('.cta-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            alert(`Thank you! We'll reach out to ${email} soon.`);
+            e.target.reset();
+        });
+    </script>
+
+</body>
+</html>
