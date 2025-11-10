@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hey Parrot - Intelligence that listens. The second brain for GTM teams.">
+    <title>Hey Parrot! - Intelligence that listens</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+           CSS CUSTOM PROPERTIES - BRAND COLORS
+        ======================================== */
+        :root {
+            --midnight-ink: #0A0A10;
+            --paper-mist: #F8F7F4;
+            --coral-pulse: #FF6B5A;
+            --sage-green: #A1BEB0;
+            --gold-clay: #D7B472;
+            --graphite-grey: #8A8F97;
+
+            /* Spacing system (8px baseline) */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 80px;
+
+            /* Typography */
+            --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Transitions */
+            --transition-smooth: 220ms ease-in-out;
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--midnight-ink);
+            background-color: var(--paper-mist);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1 {
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .microcopy {
+            font-weight: 300;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--graphite-grey);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ========================================
+           CONTAINER & LAYOUT
+        ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        section {
+            padding: var(--space-2xl) 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+        }
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--coral-pulse);
+            color: var(--paper-mist);
+        }
+
+        .btn-primary:hover {
+            background-color: #E55A4A;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(255, 107, 90, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--midnight-ink);
+            border: 2px solid var(--sage-green);
+            padding: 14px 30px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--sage-green);
+            color: var(--coral-pulse);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            background: linear-gradient(180deg, var(--paper-mist) 0%, rgba(248, 247, 244, 0.8) 100%);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 48px;
+            color: var(--midnight-ink);
+            margin-bottom: var(--space-lg);
+            display: inline-block;
+        }
+
+        .logo-dot {
+            display: inline-block;
+            color: var(--coral-pulse);
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-md);
+            color: var(--midnight-ink);
+        }
+
+        .hero .subheadline {
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--graphite-grey);
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .listening-loop {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--sage-green);
+            border-radius: 50%;
+            position: relative;
+            opacity: 0.3;
+            animation: rotate 8s linear infinite;
+        }
+
+        .listening-loop::before,
+        .listening-loop::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .listening-loop::before {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--coral-pulse);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+
+        .listening-loop::after {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-clay);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .hero .subheadline {
+                font-size: 18px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           PROBLEM STATEMENT SECTION
+        ======================================== */
+        .problem-section {
+            background-color: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .problem-content h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .problem-content p {
+            margin-bottom: var(--space-md);
+            color: var(--graphite-grey);
+        }
+
+        @media (max-width: 1024px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           SOLUTION OVERVIEW SECTION
+        ======================================== */
+        .solution-section {
+            background: linear-gradient(180deg,
+                rgba(161, 190, 176, 0.05) 0%,
+                rgba(161, 190, 176, 0.02) 100%);
+            text-align: center;
+        }
+
+        .solution-section h2 {
+            margin-bottom: var(--space-md);
+        }
+
+        .solution-section > p {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            color: var(--graphite-grey);
+            font-size: 18px;
+        }
+
+        .solution-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .solution-icon-item {
+            padding: var(--space-lg);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--midnight-ink);
+            border-radius: 50%;
+            margin: 0 auto var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transition: all var(--transition-smooth);
+        }
+
+        .solution-icon-item:hover .icon-circle {
+            border-color: var(--coral-pulse);
+            transform: scale(1.05);
+        }
+
+        .solution-icon-item h3 {
+            margin-bottom: var(--space-xs);
+        }
+
+        .solution-icon-item p {
+            color: var(--graphite-grey);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .solution-icons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           FEATURES GRID SECTION
+        ======================================== */
+        .features-section {
+            background-color: var(--paper-mist);
+        }
+
+        .features-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .feature-card {
+            background-color: white;
+            border: 1px solid rgba(161, 190, 176, 0.1);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            transition: all var(--transition-smooth);
+            box-shadow: 0 2px 8px rgba(10, 10, 16, 0.04);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(10, 10, 16, 0.12);
+            background: linear-gradient(135deg,
+                rgba(161, 190, 176, 0.05) 0%,
+                rgba(255, 107, 90, 0.05) 100%);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--midnight-ink);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .feature-card h3 {
+            margin-bottom: var(--space-sm);
+            color: var(--midnight-ink);
+        }
+
+        .feature-card p {
+            color: var(--graphite-grey);
+            font-size: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           HOW IT WORKS SECTION
+        ======================================== */
+        .how-it-works-section {
+            background: linear-gradient(180deg, white 0%, var(--paper-mist) 100%);
+        }
+
+        .how-it-works-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xl);
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .step:nth-child(even) .step-content {
+            order: 2;
+        }
+
+        .step:nth-child(even) .step-visual {
+            order: 1;
+        }
+
+        .step-number {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--coral-pulse);
+            background-color: rgba(255, 107, 90, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .step h3 {
+            font-size: 24px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .step p {
+            color: var(--graphite-grey);
+        }
+
+        .step-visual {
+            background: linear-gradient(135deg,
+                rgba(161, 190, 176, 0.1) 0%,
+                rgba(215, 180, 114, 0.1) 100%);
+            border-radius: 8px;
+            padding: var(--space-xl);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-placeholder {
+            font-size: 64px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .step {
+                grid-template-columns: 1fr;
+            }
+
+            .step:nth-child(even) .step-content,
+            .step:nth-child(even) .step-visual {
+                order: initial;
+            }
+        }
+
+        /* ========================================
+           SOCIAL PROOF SECTION
+        ======================================== */
+        .social-proof-section {
+            background: linear-gradient(180deg,
+                rgba(161, 190, 176, 0.1) 0%,
+                rgba(161, 190, 176, 0.05) 100%);
+            text-align: center;
+        }
+
+        .testimonials {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+        }
+
+        .testimonial {
+            background-color: white;
+            border-left: 4px solid var(--sage-green);
+            border-radius: 4px;
+            padding: var(--space-lg);
+            text-align: left;
+            transition: all var(--transition-smooth);
+        }
+
+        .testimonial:hover {
+            border-left-color: var(--coral-pulse);
+            transform: translateX(4px);
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--midnight-ink);
+            margin-bottom: var(--space-sm);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--graphite-grey);
+        }
+
+        /* ========================================
+           INTEGRATION SECTION
+        ======================================== */
+        .integration-section {
+            background-color: var(--paper-mist);
+            text-align: center;
+        }
+
+        .integration-section h2 {
+            margin-bottom: var(--space-xl);
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .integration-item {
+            background-color: white;
+            border: 1px solid rgba(161, 190, 176, 0.2);
+            border-radius: 8px;
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            transition: all var(--transition-smooth);
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+
+        .integration-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            border-color: var(--sage-green);
+            transform: translateY(-2px);
+        }
+
+        .integration-item span {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--midnight-ink);
+        }
+
+        /* ========================================
+           FINAL CTA SECTION
+        ======================================== */
+        .final-cta-section {
+            background: linear-gradient(135deg,
+                var(--paper-mist) 0%,
+                rgba(255, 107, 90, 0.08) 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .final-cta-section h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .final-cta-section .subheadline {
+            font-size: 20px;
+            color: var(--graphite-grey);
+            margin-bottom: var(--space-xl);
+        }
+
+        .final-cta-section .btn {
+            font-size: 18px;
+            padding: 18px 40px;
+        }
+
+        .final-cta-section .microcopy {
+            margin-top: var(--space-sm);
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .final-cta-section {
+                padding: 60px 0;
+            }
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            background-color: var(--midnight-ink);
+            color: var(--paper-mist);
+            padding: var(--space-2xl) 0 var(--space-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--paper-mist);
+        }
+
+        .footer-column p,
+        .footer-column a {
+            font-size: 14px;
+            color: var(--graphite-grey);
+            text-decoration: none;
+            line-height: 2;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-column a:hover {
+            color: var(--coral-pulse);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--sage-green);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(161, 190, 176, 0.2);
+            padding-top: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--graphite-grey);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-bottom a {
+            color: var(--graphite-grey);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--sage-green);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-sm);
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           SCROLL FADE-IN ANIMATION
+        ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="logo">
+                Hey Parrot<span class="logo-dot">!</span>
+            </div>
+
+            <h1>Intelligence that listens.</h1>
+
+            <p class="subheadline">
+                The second brain for GTM teams. Listening, learning, building — without replacing human brilliance.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#cta" class="btn btn-primary">Let Parrot listen</a>
+                <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="listening-loop"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROBLEM STATEMENT SECTION
+    ======================================== -->
+    <section class="problem-section fade-in">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>GTM teams drown in context switching</h2>
+
+                    <p>
+                        Jumping between calls, CRMs, and spreadsheets loses the thread. The pattern emerges in one conversation but vanishes before the next.
+                    </p>
+
+                    <p>
+                        Meeting insights evaporate into forgotten notes. What was said, what was promised, what mattered — it all fades into the noise of another busy week.
+                    </p>
+
+                    <p>
+                        Sales collateral is outdated before it's shared. By the time the deck is polished, the competitive landscape has shifted and customer feedback has evolved.
+                    </p>
+
+                    <p>
+                        Teams repeat work because knowledge isn't captured. The same objection, the same pitch, the same discovery — built from scratch, every single time.
+                    </p>
+                </div>
+                <div class="problem-visual"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SOLUTION OVERVIEW SECTION
+    ======================================== -->
+    <section class="solution-section fade-in">
+        <div class="container">
+            <h2>Parrot listens, learns, and acts</h2>
+
+            <p>
+                Hey Parrot captures context from conversations, documents, and workflows — then transforms that intelligence into actionable assets. Your team's knowledge becomes a living system, not a static archive.
+            </p>
+
+            <div class="solution-icons">
+                <div class="solution-icon-item">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 48 48" style="width: 40px; height: 40px;">
+                            <path d="M24 8 L24 24 M24 24 L32 24 M16 24 C16 15 32 15 32 24" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="24" cy="32" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Listen</h3>
+                    <p>Real-time capture from meetings and calls</p>
+                </div>
+
+                <div class="solution-icon-item">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 48 48" style="width: 40px; height: 40px;">
+                            <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 24 L24 24 M24 12 L24 24 M24 24 L36 24" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Learn</h3>
+                    <p>Pattern recognition across your GTM motion</p>
+                </div>
+
+                <div class="solution-icon-item">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 48 48" style="width: 40px; height: 40px;">
+                            <rect x="12" y="12" width="24" height="24" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M18 20 L30 20 M18 24 L30 24 M18 28 L26 28" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Act</h3>
+                    <p>Generate collateral, insights, and summaries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CORE FEATURES GRID SECTION
+    ======================================== -->
+    <section class="features-section fade-in">
+        <div class="container">
+            <h2>Built for how you work</h2>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="16" />
+                            <path d="M24 16 L24 24 L30 28" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Intelligent Meeting Capture</h3>
+                    <p>
+                        Parrot joins your calls and captures what matters — decisions, action items, and customer insights.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <rect x="12" y="14" width="24" height="20" rx="2"/>
+                            <path d="M16 20 L32 20 M16 24 L32 24 M16 28 L28 28"/>
+                        </svg>
+                    </div>
+                    <h3>Automatic Collateral Generation</h3>
+                    <p>
+                        Transform conversations into one-pagers, case studies, and pitch decks. Beautifully formatted, instantly ready.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <rect x="10" y="10" width="12" height="12" rx="1"/>
+                            <rect x="26" y="10" width="12" height="12" rx="1"/>
+                            <rect x="10" y="26" width="12" height="12" rx="1"/>
+                            <rect x="26" y="26" width="12" height="12" rx="1"/>
+                        </svg>
+                    </div>
+                    <h3>Sales Enablement Library</h3>
+                    <p>
+                        Every asset, organized and searchable. Your team finds what they need, when they need it.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <path d="M8 36 L16 24 L24 28 L32 16 L40 20" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="16" cy="24" r="2"/>
+                            <circle cx="24" cy="28" r="2"/>
+                            <circle cx="32" cy="16" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Pattern Recognition</h3>
+                    <p>
+                        Parrot spots trends across deals, objections, and customer feedback — so you stay ahead.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <rect x="12" y="12" width="24" height="24" rx="4"/>
+                            <path d="M20 20 L28 20 M20 24 L28 24 M20 28 L26 28"/>
+                            <path d="M32 16 L38 16 L38 22" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Chrome Extension</h3>
+                    <p>
+                        A sidebar that lives where you work. Access insights and generate collateral without leaving your flow.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="3"/>
+                            <circle cx="14" cy="14" r="3"/>
+                            <circle cx="34" cy="14" r="3"/>
+                            <circle cx="14" cy="34" r="3"/>
+                            <circle cx="34" cy="34" r="3"/>
+                            <path d="M24 24 L14 14 M24 24 L34 14 M24 24 L14 34 M24 24 L34 34"/>
+                        </svg>
+                    </div>
+                    <h3>Team Knowledge Graph</h3>
+                    <p>
+                        Parrot connects the dots across conversations, documents, and deals — your team's shared memory.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         HOW IT WORKS SECTION
+    ======================================== -->
+    <section class="how-it-works-section fade-in" id="how-it-works">
+        <div class="container">
+            <h2>How it works</h2>
+
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-content">
+                        <span class="step-number">Step 1</span>
+                        <h3>Connect & Listen</h3>
+                        <p>
+                            Link your calendar, CRM, and communication tools. Parrot listens in the background — no manual entry. It joins your meetings, reads your context, and starts building your second brain.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-placeholder">🔗</div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-content">
+                        <span class="step-number">Step 2</span>
+                        <h3>Learn & Understand</h3>
+                        <p>
+                            Parrot analyzes context across meetings, deals, and documents. It learns your team's language and priorities, recognizing patterns that matter to your business.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-placeholder">🧠</div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-content">
+                        <span class="step-number">Step 3</span>
+                        <h3>Build & Deliver</h3>
+                        <p>
+                            Generate battle cards, case studies, or one-pagers in seconds. Every asset reflects your latest intelligence, always current, always on-brand.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-placeholder">✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SOCIAL PROOF SECTION
+    ======================================== -->
+    <section class="social-proof-section fade-in">
+        <div class="container">
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Parrot cut our sales collateral creation time from days to minutes."
+                    </p>
+                    <div class="testimonial-author">— VP Sales, Enterprise SaaS</div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Finally, our meeting insights actually get used."
+                    </p>
+                    <div class="testimonial-author">— RevOps Lead, Hypergrowth Startup</div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "It's like having a brilliant analyst on every call."
+                    </p>
+                    <div class="testimonial-author">— Customer Success Director</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         INTEGRATION SECTION
+    ======================================== -->
+    <section class="integration-section fade-in">
+        <div class="container">
+            <h2>Parrot works where you work</h2>
+
+            <div class="integration-grid">
+                <div class="integration-item">
+                    <span>Salesforce</span>
+                </div>
+                <div class="integration-item">
+                    <span>HubSpot</span>
+                </div>
+                <div class="integration-item">
+                    <span>Gong</span>
+                </div>
+                <div class="integration-item">
+                    <span>Zoom</span>
+                </div>
+                <div class="integration-item">
+                    <span>Google Meet</span>
+                </div>
+                <div class="integration-item">
+                    <span>Slack</span>
+                </div>
+                <div class="integration-item">
+                    <span>Notion</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA SECTION
+    ======================================== -->
+    <section class="final-cta-section fade-in" id="cta">
+        <div class="container">
+            <h2>Let intelligence listen.</h2>
+
+            <p class="subheadline">
+                Join the GTM teams building smarter, not harder.
+            </p>
+
+            <a href="#" class="btn btn-primary">Get early access</a>
+
+            <span class="microcopy">No credit card. Just curiosity.</span>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1: Brand -->
+                <div class="footer-column">
+                    <div class="footer-logo">Hey Parrot!</div>
+                    <p class="footer-tagline">Intelligence that listens.</p>
+                </div>
+
+                <!-- Column 2: Product -->
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <div class="footer-links">
+                        <a href="#">Features</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Documentation</a>
+                        <a href="#">API</a>
+                    </div>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <div class="footer-links">
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2025 Hey Parrot. All rights reserved.</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT - SMOOTH INTERACTIONS
+    ======================================== -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return; // Skip if just "#"
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
